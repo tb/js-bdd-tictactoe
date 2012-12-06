@@ -1,30 +1,29 @@
 # TicTacToe
 
-The best jQuery plugin ever.
+The best JavaScript BDD TicTacToe ever.
 
 ## Getting Started
-Download the [production version][min] or the [development version][max].
 
-[min]: https://raw.github.com/tb/tictactoe/master/dist/tictactoe.min.js
-[max]: https://raw.github.com/tb/tictactoe/master/dist/tictactoe.js
+Install [PhantomJS](http://phantomjs.org)
 
-In your web page:
-
-```html
-<script src="jquery.js"></script>
-<script src="dist/tictactoe.min.js"></script>
-<script>
-jQuery(function($) {
-  $.awesome(); // "awesome"
-});
-</script>
+For 32-bit Linux system:
+```
+wget http://phantomjs.googlecode.com/files/phantomjs-1.7.0-linux-i686.tar.bz2
+tar -jxvf phantomjs-1.7.0-linux-i686.tar.bz2
+sudo cp phantomjs-1.7.0-linux-i686/bin/phantomjs /usr/bin/
+rm -rf phantomjs-1.7.0-linux-i686*
 ```
 
-## Documentation
-_(Coming soon)_
+Install [grunt](http://phantomjs.org) grunt http://gruntjs.com
+```
+sudo su
+apt-get install npm
+npm install -g grunt
+cd js-bdd-tictactoe
+npm install grunt-haml grunt-jasmine-runner
+```
 
-## Examples
-_(Coming soon)_
-
-## Release History
-_(Nothing yet)_
+Run tests
+```
+grunt
+```
