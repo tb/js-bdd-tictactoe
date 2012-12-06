@@ -14,7 +14,7 @@ sudo cp phantomjs-1.7.0-linux-i686/bin/phantomjs /usr/bin/
 rm -rf phantomjs-1.7.0-linux-i686*
 ```
 
-Install [grunt](http://phantomjs.org) grunt http://gruntjs.com
+Install [grunt](http://phantomjs.org)
 ```
 sudo su
 apt-get install npm
