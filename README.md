@@ -19,11 +19,16 @@ Install [grunt](http://phantomjs.org)
 sudo su
 apt-get install npm
 npm install -g grunt
+```
+
+Install [grunt-jasmine-runner](http://github.com/jasmine-contrib/grunt-jasmine-runner)
+```
 cd js-bdd-tictactoe
-npm install grunt-haml grunt-jasmine-runner
+npm install grunt-jasmine-runner
 ```
 
 Run tests
 ```
 grunt
 ```
+
