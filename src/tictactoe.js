@@ -14,7 +14,7 @@
     };
 
     var $container = container;
-    var $board, currentSymbol, cells, endMessage;
+    var $board, currentSymbol, cells, endMessage, indexOfWinCombination;
     var winingCombinations = [
         [1,2,3],[4,5,6],[7,8,9],
         [1,4,7],[2,5,8],[3,6,9],
@@ -25,6 +25,7 @@
       cells         = {};
       endMessage    = '';
       currentSymbol = 'x';
+      indexOfWinCombination = null;
       buildBoard();
       bindEvents();
     }
@@ -37,9 +38,9 @@
             $tr.appendTo($board);
             for (var j=0; j < 3; j++) {
                 var cellId = j+(i*3)+1;
-                var htmlClass  = (cellId % 3) !== 0 ? 'right-border' : '';
-                    htmlClass += cellId > 3 ? ' top-border' : '';
-                var $td = $('<td>', {'data-cell': cellId, 'class': htmlClass});
+                var $td = $('<td>', {'data-cell': cellId});
+                if ((cellId % 3) !== 0) { $td.addClass('right-border'); }
+                if (cellId > 3) { $td.addClass('top-border'); }
                 $td.appendTo($tr);
             }
         }
@@ -77,7 +78,7 @@
 
     function write(symbol, cell) {
       if (!cells[cell]) {
-          getCell(cell).html(symbol);
+          getCell(cell).addClass(symbol+'SelectedField');
           cells[cell] = symbol;
           return true;
       } else {
@@ -87,14 +88,27 @@
 
     function gameIsFinished() {
       if (currentSymbolWins()) {
-        endMessage = currentSymbol + ' is a winner! Yay!';
+          setEndMessage(currentSymbol + ' is a winner! Yay!');
+          highlightWinCombination();
         return true;
       } else if (noEmptyCellsLeft()) {
-         endMessage = 'Aww... it\'s a tie';
+          setEndMessage('Aww... it\'s a tie');
         return true;
       } else {
         return false;
       }
+    }
+
+    function setEndMessage(msg) {
+      endMessage = msg;
+    }
+
+    function highlightWinCombination() {
+        if (indexOfWinCombination) {
+            $(winingCombinations[indexOfWinCombination]).each(function(){
+                getCell(this).addClass('win-cell');
+            });
+        }
     }
 
     function validWinningCombination(index) {
@@ -109,7 +123,10 @@
     function currentSymbolWins() {
       var i = 0;
       while (i < winingCombinations.length) {
-        if (validWinningCombination(i)) { return true; }
+        if (validWinningCombination(i)) {
+            indexOfWinCombination = i;
+            return true;
+        }
         i++;
       }
       return false;
