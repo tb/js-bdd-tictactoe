@@ -39,13 +39,13 @@ module.exports = function(grunt) {
     concat: {
       dist: {
           src : ['libs/jquery/*.js', 'libs/underscore/*.js', 'libs/other/*.js', 'src/**/*.js'],
-          dest: 'dist/application.js'
+          dest: 'dist/tictactoe.js'
       }
     },
     min: {
       dist: {
           src : ['libs/jquery/*.js', 'libs/underscore/*.js', 'libs/other/*.js', 'src/**/*.js'],
-          dest: 'dist/application.js'
+          dest: 'dist/tictactoe.js'
       }
     }
   });

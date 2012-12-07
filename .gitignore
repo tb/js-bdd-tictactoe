@@ -1,4 +1,4 @@
 _SpecRunner.html
 .idea/
 node_modules/
-dist/application.js
+dist/tictactoe.js
