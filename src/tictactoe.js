@@ -8,9 +8,27 @@
 
 (function($) {
 
-  function TicTacToe(board, options) {
-    var $board = board,
+  function TicTacToe(container, options) {
+    var $container = container,
+        $board = null,
         cells = {};
+
+    function buildBoard() {
+        $board = $('<table>');
+        for (var i=0; i < 3; i++) {
+            var $tr = $('<tr>');
+            $tr.appendTo($board);
+            for (var j=0; j < 3; j++) {
+                var $td = $('<td>', {'data-cell': j+(i*3)+1});
+                $td.appendTo($tr);
+            }
+        }
+        $board.appendTo($container);
+    }
+
+    function getBoard() {
+      return $board;
+    }
 
     function getCell(cell) {
       return $board.find('[data-cell='+cell+']');
@@ -31,8 +49,11 @@
       }
     }
 
+    buildBoard();
+
     return {
-      write: write
+      write: write,
+      getBoard: getBoard
     };
   }
 
