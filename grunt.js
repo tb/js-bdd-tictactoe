@@ -13,7 +13,7 @@ module.exports = function(grunt) {
     },
     watch: {
       files: '<config:lint.files>',
-      tasks: 'lint jasmine'
+      tasks: 'build lint'
     },
     jshint: {
       options: {
@@ -36,7 +36,18 @@ module.exports = function(grunt) {
         console: true
       }
     },
-    uglify: {}
+    concat: {
+      dist: {
+          src : ['libs/jquery/*.js', 'libs/underscore/*.js', 'libs/other/*.js', 'src/**/*.js'],
+          dest: 'dist/tictactoe.js'
+      }
+    },
+    min: {
+      dist: {
+          src : ['libs/jquery/*.js', 'libs/underscore/*.js', 'libs/other/*.js', 'src/**/*.js'],
+          dest: 'dist/tictactoe.js'
+      }
+    }
   });
 
   grunt.loadNpmTasks('grunt-jasmine-runner');
@@ -44,4 +55,5 @@ module.exports = function(grunt) {
   // Default task.
   grunt.registerTask('default', 'lint jasmine');
 
+  grunt.registerTask('build', 'concat:dist');
 };
