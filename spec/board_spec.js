@@ -5,7 +5,11 @@ describe('Board',function(){
   beforeEach(function() {
     loadFixtures('board1.html');
 
-    $container = $('.board1').tictactoe();
+    $container = $('.board1').tictactoe({
+      onFinish: function(winner) {
+        alert('Good job' + winner);
+      }
+    });
     $tictactoe = $container.data('tictactoe');
     $board = $tictactoe.getBoard();
 
@@ -34,7 +38,7 @@ describe('Board',function(){
   it('should display winner after finish',function(){
     spyOn(window, 'alert');
     $board.click(1, 4, 2, 5, 3, 6, 7);
-    expect(window.alert).toHaveBeenCalledWith('x is a winner! Yay!');
+    expect(window.alert).toHaveBeenCalledWith('Good job x!"');
   });
 
   it('should not display winner if game is not finish',function(){
