@@ -13,7 +13,7 @@ module.exports = function(grunt) {
     },
     watch: {
       files: '<config:lint.files>',
-      tasks: 'build lint'
+      tasks: 'lint jasmine build'
     },
     jshint: {
       options: {
