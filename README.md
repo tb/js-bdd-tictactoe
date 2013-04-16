@@ -25,6 +25,11 @@ Install [grunt-jasmine-runner](http://github.com/jasmine-contrib/grunt-jasmine-r
 ```
 cd js-bdd-tictactoe
 npm install grunt-jasmine-runner
+
+```
+It may be neccessary to make a simlink in Ubuntu
+```
+sudo ln -s /usr/bin/nodejs /usr/local/bin/node
 ```
 
 Run tests
