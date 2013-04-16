@@ -9,10 +9,10 @@ module.exports = function(grunt) {
       specs : 'spec/**/*_spec.js'
     },
     lint: {
-      files: ['grunt.js', 'src/**/*.js'] // , 'spec/**/*.js'
+      files: ['grunt.js', 'src/**/*.js']
     },
     watch: {
-      files: '<config:lint.files>',
+      files: ['grunt.js', 'src/**/*.js', 'spec/**/*.js'],
       tasks: 'lint jasmine build'
     },
     jshint: {
